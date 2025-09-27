@@ -1,0 +1,101 @@
+### 27 sep 2025 ###
+
+using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace Calculator
+{
+  
+    public partial class MainWindow : Window
+    {
+        double f_n, s_n, r_n;
+        String Selectedoperator; 
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
+
+        private void equalsbutton_click(object sender, RoutedEventArgs e)
+        {
+            s_n = Convert.ToDouble(Displ.Text);
+            switch (Selectedoperator)
+            {
+                case "+":
+                    r_n = f_n + s_n; 
+                    Displ.Text = r_n.ToString();
+                    break;
+                case "-":
+                    r_n = f_n - s_n;
+                    Displ.Text = r_n.ToString();
+                    break;
+                case "*":
+                    r_n = f_n * s_n;
+                    Displ.Text = r_n.ToString();
+                    break;
+                case "/":
+                    if(s_n == 0)
+                    {
+                        Displ.Text = "error";
+                        return; 
+                    }
+                    r_n = f_n / s_n;
+                    Displ.Text = r_n.ToString();
+                    break;
+            }
+        }
+
+        private void button_click(object sender, RoutedEventArgs e)
+        {
+            Button btn = sender as Button;
+            string buttonContent = btn.Content.ToString();
+
+            if (Displ.Text == "0" && buttonContent == ".")
+            {
+                Displ.Text += buttonContent;
+                return;
+            }
+
+            if (Displ.Text == "0" && buttonContent != ".")
+            {
+                Displ.Text = buttonContent;
+                return;
+            }
+
+            if (Displ.Text.Contains(".") && buttonContent == ".")
+            {
+                return;
+            }
+
+            Displ.Text += buttonContent;
+        }
+
+        private void percentagebutton_click(object sender, RoutedEventArgs e)
+        {
+            Displ.Text = (Convert.ToDouble(Displ.Text)/100).ToString();
+            
+        }
+
+        private void acbutton_click(object sender, RoutedEventArgs e)
+        {
+            Displ.Text = "0";
+        }
+      
+        private void opbutton_click(object sender, RoutedEventArgs e)
+        {
+            Button op = sender as Button;
+            f_n = Convert.ToDouble(Displ.Text);
+            Selectedoperator = op.Content.ToString();
+            Displ.Text = "0";
+            MessageBox.Show("first no is : " + f_n + "selected operator is : " + Selectedoperator); 
+
+        }
+    }
+}
