@@ -19,3 +19,15 @@ class Student {
 test syllabus : 
 7-8 marks -> level 1 to level 4 -> authenticationa and authorization 
 7 marks type script 
+
+steps : to install angular : 
+for angular : 
+in cmd : 
+1 : npm install -g@angular\cli 
+2. : ng -v -> to check the version ofhte installed angular file 
+In vsc : 
+1. : create an folder : 
+in terminal : 
+1. : ng new demo -ANG 
+2. : cd demo -AND
+3. : ng serve
