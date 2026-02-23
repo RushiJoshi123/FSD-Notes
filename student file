@@ -1,0 +1,17 @@
+class Student {
+    Constructor (
+        public  RollNo:number ,
+        public Name:string,
+        public Course:string ,
+        private IsFeePaid:boolean
+        ){}
+    CheckFeeStatus():string{
+        return this.IsFeePaid ? Paid:Unpaid ; 
+    }
+    let s1 = new Student (101,"Raj","CSE",true);
+    let s2 = new Student(100,"Shyam","IT",false);
+    let student:Student[] = [s1,s2] ; 
+    student.Foreach(s=>{
+       console.log( s.checkFeeStatus()) ; 
+    })
+}
