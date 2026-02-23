@@ -1,0 +1,25 @@
+class BankAccount{
+    public AcctHolder:string;
+    private balance : number ; 
+    Constructor(AcctHolder:string,initialBal:number){
+        this.AcctHolder=AcctHolder; 
+        this.balance = initialBal; 
+    }
+    Deposit(Amount:number):void{
+        this.balance = this.balance+Amount ; 
+        
+    }
+    Withdraw(Amount:number):boolean{
+        if(Amount>=this.balance){
+            return false; 
+        }
+        this.balance = this.balance - Amount ; 
+        return true ; 
+    }
+    getbalance():number{
+        return this.balance ; 
+    }
+    let acct1 = new BankAccount{"JHS",10000} ; 
+    Deposit.acct1(2000) ; 
+    console.log(acct1.getbalance()) ; 
+}
